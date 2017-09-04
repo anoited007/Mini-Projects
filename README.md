@@ -1,2 +1,2 @@
 # Mini-Projects
-A collection of small projects I have been involved in.
+This repository contains a collection of small projects I have been involved in.
