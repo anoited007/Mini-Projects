@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 /**
- * Write a description of class BitwiseOpp here.
- * 
  * @author (Immanuel) 
  * @version (2017)
  */
@@ -34,18 +32,13 @@ public class NumberBaseConvertor
                     numberBase.add(number);
                     break;
                 }
-
             }
-
             baseArray = new int[numberBase.size()];
             for(int i=0; i<baseArray.length; i++){
                 baseArray[i] = numberBase.get(baseArray.length-i-1);
             }
-
         }
-
         return baseArray;
-
     }
 
     /**
@@ -61,7 +54,6 @@ public class NumberBaseConvertor
         if(base <= 10){
             System.out.println("Do not use this method to convert to other bases below 10.");
         }
-
         else{
             while(number != 0){
                 int remainder = number%base;
@@ -72,18 +64,14 @@ public class NumberBaseConvertor
                     numberBase.add(number);
                     break;
                 }
-
             }
-
             String[] stringArray = new String[numberBase.size()];
-
             for(int i=0; i<stringArray.length; i++){
                 String[] specialValues = {"A", "B", "C", "D", "E", "F"};
 
                 if(numberBase.get(stringArray.length-i-1) < 10){
                     stringArray[i] = numberBase.get(stringArray.length-i-1).toString();
                 }
-
                 else{
                     switch(numberBase.get(stringArray.length-i-1)){
                         case 10:
@@ -110,7 +98,6 @@ public class NumberBaseConvertor
                         stringArray[i] = specialValues[5];
                         break;
                     }
-
                 }
             }
 
@@ -121,5 +108,4 @@ public class NumberBaseConvertor
         }
         return new String(charArray);
     }
-
 }
