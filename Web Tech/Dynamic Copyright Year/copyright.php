@@ -11,4 +11,3 @@ function copyright($initialYear) {
 	endif;
 }
 
-copyright("2050");
