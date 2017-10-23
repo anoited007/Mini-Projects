@@ -7,7 +7,7 @@ public class Palindromes{
     /**
     * This method checks if a String is a palindrome.
     * @param input takes string as parameter. The method checks if this string is a palindrome or not.
-    * @return Returns true if the String is palindrome and false if it is not.
+    * @return True if the String is palindrome and false if it is not.
     */
     public boolean checkPalindromeString(String input){
         
@@ -27,7 +27,7 @@ public class Palindromes{
     
     /**
      * @param input takes an integer as parameter. 
-     * @return returns true if the integer is palindrome and false if it is not.
+     * @return True if the integer is palindrome and false if it is not.
      */
     public boolean checkPalindromeNumber(int input){
         String newInput= Integer.toString(input);
