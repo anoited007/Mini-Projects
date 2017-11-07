@@ -6,10 +6,9 @@ public class BmiCalculator {
 	double weight;
 	double height;
 	double bmi;
-	
-	Scanner input = new Scanner(System.in);
-	
+		
 	public double calculateBmi(){
+	Scanner input = new Scanner(System.in);
 	System.out.println("Please select your unit of measurement (the preceeding number):");
 	System.out.println("1. Weight in pounds, height in inches\n 2. Weight in kilograms, height in meters");
 	unit = input.nextInt();
