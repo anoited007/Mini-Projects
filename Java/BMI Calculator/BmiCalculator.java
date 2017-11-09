@@ -1,49 +1,92 @@
 
-import java.util.Scanner;
+import java.util.*;
 
 public class BmiCalculator {
 	int unit;
 	double weight;
 	double height;
 	double bmi;
-		
-	public double calculateBmi(){
+	
 	Scanner input = new Scanner(System.in);
+	
+	public double calculateBmi() {
 	System.out.println("Please select your unit of measurement (the preceeding number):");
 	System.out.println("1. Weight in pounds, height in inches\n 2. Weight in kilograms, height in meters");
-	unit = input.nextInt();
 	
+	try {
+			unit = input.nextInt();
+		} catch (InputMismatchException e) 
+		
+		{
+			System.out.println("Enter a numberic value");
+		}
+			
 	switch(unit){
 		case 1: 
 		System.out.print("Enter your weight in Ibs (Pounds): ");
-		weight = input.nextDouble();
+		
+		try {
+			weight = input.nextDouble();
+		} catch (InputMismatchException e) 
+		
+		{
+			System.out.println("Enter a numberic value");
+		}
+		
 		
 		System.out.print("Enter your height in In (Inches) : ");
-		height = input.nextDouble();
 		
+		try {
+			height = input.nextDouble();
+		} catch (InputMismatchException e) 
+		
+		{
+			System.out.println("Enter a numberic value");
+		}
+				
 		bmi = (weight * 705)/(height*height);
 		break;
 		
 		case 2: 
 		System.out.print("Enter your weight in Kgs (Kilograms): ");
-		weight = input.nextDouble();
+		try {
+			weight = input.nextDouble();
+		} catch (InputMismatchException e) 
 		
+		{
+			System.out.println("Enter a numberic value");
+		}
+				
 		System.out.print("Enter your height in m (Meters) : ");
-		height = input.nextDouble();
+		try {
+			height = input.nextDouble();
+		} catch (InputMismatchException e) 
 		
+		{
+			System.out.println("Enter a numberic value");
+		}
+				
 		bmi = weight / (height*height);
 		
 	}
 	
 	return bmi;
-  }
+	}
   
   public static void main (String[] args) {
 	  BmiCalculator bmi = new BmiCalculator();
-	  double bmiValue = bmi.calculateBmi();
+	  double bmiValue = 0;
 	  
-	  if(bmiValue < 18.5)
-	  System.out.println("You are under-weight. Please consider increasing your daily meal intake."); 
+	  try {
+			bmiValue = bmi.calculateBmi();
+		} catch (InputMismatchException e) 
+		
+		{
+			System.out.println("Enter a numberic value");
+		}
+	  	    
+	  if(bmiValue < 18.5) {
+	  System.out.println("You are under-weight. Please consider increasing your daily meal intake."); }
 	  
 	  else if(bmiValue >= 18.5 || bmiValue <= 24.9)
 	  System.out.println("Your weight is normal. Continue keeping your diet pattern to maintian your weight.");
