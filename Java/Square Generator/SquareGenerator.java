@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 /** 
 This class creates a square with the side lenght the user will input.
 */
-public class Program
+public class SquareGenerator
 {
 	public static void main(String[] args) {
 	    
