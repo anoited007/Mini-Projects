@@ -45,7 +45,7 @@ public class LinkedListStack<T> implements IStack<T> {
     @Override
     public T push(T element) {
         Node<T> node = new Node<>(element);
-        data.addLast(node);
+        data.addFirst(node);
         return element;
     }
 

@@ -32,7 +32,7 @@ public class Node<T> {
     }
 
     public boolean hasNext(){
-        return this.next == null;
+        return this.next != null;
     }
 
 }

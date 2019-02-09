@@ -43,10 +43,10 @@ public class DblNode<T> {
     }
 
     public boolean hasNext() {
-       return this.next == null;
+       return this.next != null;
     }
 
     public boolean hasPrev(){
-       return this.prev == null;
+       return this.prev != null;
     }
 }

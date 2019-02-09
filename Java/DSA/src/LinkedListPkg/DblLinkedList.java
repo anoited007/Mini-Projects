@@ -1,13 +1,14 @@
 package LinkedListPkg;
 
 public class DblLinkedList<T> implements IDblLinkedList<T> {
-    private DblNode<T> head, next, prev;
+    private DblNode<T> head, next, prev, tail;
     private int size;
 
     public DblLinkedList(){
         head = null;
         next = null;
         prev = null;
+        tail = null;
         size = 0;
     }
 
@@ -15,6 +16,7 @@ public class DblLinkedList<T> implements IDblLinkedList<T> {
         this.head = head;
         next = null;
         prev = null;
+        tail = null;
         size = 1;
     }
 
@@ -24,6 +26,14 @@ public class DblLinkedList<T> implements IDblLinkedList<T> {
 
     public void setHead(DblNode<T> head) {
         this.head = head;
+    }
+
+    public DblNode<T> getTail() {
+        return tail;
+    }
+
+    public void setTail(DblNode<T> tail) {
+        this.tail = tail;
     }
 
     public DblNode<T> getNext() {
@@ -80,7 +90,18 @@ public class DblLinkedList<T> implements IDblLinkedList<T> {
             if (position == 0) {
                 addFirst(node); //add first already increases the size of the list so no need to increase it again.
 
-            } else {
+            }
+
+            /*
+            * If position is equal to size plus one, it means we are trying to add to the end of the list so we just
+            * call addLast method.
+             */
+            else if( position == size + 1) {
+                addLast(node);
+
+            }
+
+            else {
                 // A temporary node keep track of the nodes
                 DblNode<T> temp = head.getNext();
                 DblNode<T> prev = head;
@@ -102,16 +123,11 @@ public class DblLinkedList<T> implements IDblLinkedList<T> {
 
     @Override
     public void addLast(DblNode<T> node) {
-        DblNode<T> temp = head;
-        while (temp.hasNext()) {
-            temp = temp.getNext();
-
-            if (!temp.hasNext()) {
-                temp.setNext(node);
-                node.setPrev(temp);
-                size++;
-            }
-        }
+        DblNode<T> temp = tail;
+        temp.setNext(node);
+        tail = node;
+        tail.setPrev(temp);
+        size++;
     }
 
     @Override
@@ -143,6 +159,9 @@ public class DblLinkedList<T> implements IDblLinkedList<T> {
                 size--;
             }
 
+            else if(position == size -1) removeLast();
+
+
             else {
                 // A temporary node keep track of the nodes
                 DblNode<T> temp = head.getNext();
@@ -168,20 +187,14 @@ public class DblLinkedList<T> implements IDblLinkedList<T> {
 
     @Override
     public DblNode<T> removeLast() {
-        DblNode<T> temp = head;
+        DblNode<T> temp = tail;
         DblNode<T> removedNode = null;
         DblNode<T> prev = temp.getPrev();
-
-        while (temp.hasNext()) {
-            temp = temp.getNext();
-
-            if (!temp.hasNext()) {
-                removedNode = temp;
-                temp = null;
-                size--;
-            }
-        }
-
+        removedNode = tail; //assign the old tail to the removed node object.
+        tail = prev; //assign the prev of old tail as the new tail
+        tail.setNext(null);  //assign the next of the new tail to null to remvoe reference to the old tail.
+        temp = null; // remove the previous tail
+        size--;
         return removedNode;
     }
 
