@@ -1,5 +1,7 @@
 package QueuePkg;
 
+import java.awt.*;
+
 public interface IQueue<T> {
     // Add an element to the tail of the queue
     void enqueue(T t);
